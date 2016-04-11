@@ -5,6 +5,7 @@ import time
 
 
 
+
 subCats = set()
 urls = ["http://www.minimix.ro/bauturi.1001/","http://www.minimix.ro/alimente.1000/"]
 
@@ -12,7 +13,7 @@ urls = ["http://www.minimix.ro/bauturi.1001/","http://www.minimix.ro/alimente.10
 def hasNumbers(inputString):
 	return any(char.isdigit() for char in inputString)
 
-wordlist = open('./wordlist.txt', 'w')
+wordlist = open('./'+ sys.argv[1] , 'w')
 products = set()
 
 def nameToWordlist(url, product_name, category):
@@ -48,8 +49,8 @@ def getSubCats():
 #get products and prices
 def getProductsAndPrices():
 	while len(subCats) != 0:
-		sys.stdout.write('=')
-		sys.stdout.flush()
+		#sys.stdout.write('=')
+		#sys.stdout.flush()
 		productsToVisit = []
 		actual_link = subCats.pop()
 		text = urllib2.urlopen(actual_link).read()
@@ -65,8 +66,8 @@ def getProductsAndPrices():
 		if nextPage is not None:
 			subCats.add(nextPage['href'])
 		for product in productsToVisit:
-			sys.stdout.write('=')
-			sys.stdout.flush();
+			# sys.stdout.write('=')
+			# sys.stdout.flush();
 			product_page = urllib2.urlopen(product).read()
 			productSoup = BeautifulSoup(product_page)
 			div = productSoup.find('div', attrs={'class':'ProdTopBox'})
