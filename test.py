@@ -1,15 +1,19 @@
 from flask import Flask
+import subprocess
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
     return 'Hello World!'
 
+
 @app.route('/do-ocr/')
 def pushForOCR():
   strImagePath = request.args.get("path").lower()
 
-  ##Call OCR engine for image @ strImagePath here
+  # 'text' variable contains the text from @strImagePath
+  text = subprocess.check_output(['tesseract', strImagePath, 'stdout'])
+  
 
 if __name__ == '__main__':
   app.debug = True
