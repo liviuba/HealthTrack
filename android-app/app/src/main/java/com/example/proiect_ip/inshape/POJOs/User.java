@@ -1,6 +1,8 @@
 package com.example.proiect_ip.inshape.POJOs;
 
+import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientFactory;
 import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientMock;
+import com.example.proiect_ip.inshape.BackendAPIClient.IBackendAPIClient;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.util.ArrayList;
@@ -37,7 +39,7 @@ public class User {
     public void setBaskets(ArrayList<Integer> basketIDs){
         baskets = new ArrayList<Basket>();
 
-        BackendAPIClientMock client = new BackendAPIClientMock();
+        IBackendAPIClient client = BackendAPIClientFactory.getBackendAPIClient();
         for(Integer basketID: basketIDs){
             baskets.add(client.getBasket(basketID));
         }

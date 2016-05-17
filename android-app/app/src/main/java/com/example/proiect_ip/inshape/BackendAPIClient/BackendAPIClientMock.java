@@ -17,9 +17,9 @@ import java.util.ArrayList;
  * Created by liviu on 5/16/2016.
  */
 public class BackendAPIClientMock implements IBackendAPIClient {
-    private static String userAuthToken;
-    private static ObjectMapper mapper;
-    private static AssetManager assetManager;
+    private String userAuthToken;
+    private ObjectMapper mapper;
+    private AssetManager assetManager;
 
     /*
         Needed in order to avoid shuffling arround the AssetManager
@@ -28,8 +28,6 @@ public class BackendAPIClientMock implements IBackendAPIClient {
         mapper = new ObjectMapper();
         this.assetManager = assetManager;
     }
-
-    public BackendAPIClientMock(){}
 
     public User userAuth (String userName, String userPassword){
         User user = new User();

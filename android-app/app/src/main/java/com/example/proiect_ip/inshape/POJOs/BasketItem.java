@@ -1,4 +1,6 @@
 package com.example.proiect_ip.inshape.POJOs;
+import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientFactory;
+import com.example.proiect_ip.inshape.BackendAPIClient.IBackendAPIClient;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 import android.content.ClipData;
@@ -33,7 +35,7 @@ public class BasketItem {
 
     @JsonSetter("product")
     public void setProduct(Integer prod) {
-        BackendAPIClientMock client = new BackendAPIClientMock();
+        IBackendAPIClient client = BackendAPIClientFactory.getBackendAPIClient();
 
         product = client.getProduct(prod);
     }

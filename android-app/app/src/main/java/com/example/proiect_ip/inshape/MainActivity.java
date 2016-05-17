@@ -22,7 +22,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientFactory;
 import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientMock;
+import com.example.proiect_ip.inshape.BackendAPIClient.IBackendAPIClient;
 import com.example.proiect_ip.inshape.POJOs.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         /**API mock deserialization test **/
-        BackendAPIClientMock backendAPI = new BackendAPIClientMock(getAssets());
-        User test = backendAPI.userAuth("testUsername", "testPasswd");
+        new BackendAPIClientFactory(getAssets(), "127.0.0.1");//TODO: Get rid of this at some point
+
+        IBackendAPIClient client = BackendAPIClientFactory.getBackendAPIClient();
+        User test = client.userAuth("testUsername", "testPasswd");
 
         ArrayList<Basket> baskets = test.getBaskets();
         for(Basket i: baskets){
