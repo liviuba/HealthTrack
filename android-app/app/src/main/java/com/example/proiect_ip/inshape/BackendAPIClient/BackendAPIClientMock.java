@@ -15,6 +15,9 @@ import java.util.ArrayList;
 
 /**
  * Created by liviu on 5/16/2016.
+ *
+ * Enables mocking of API replies when a VM is unavailable
+ * Heavily coupled with assets/Mocks directory, thread with care!
  */
 public class BackendAPIClientMock implements IBackendAPIClient {
     private String userAuthToken;
