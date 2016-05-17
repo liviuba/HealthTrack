@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +20,10 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+
+import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientMock;
+import com.example.proiect_ip.inshape.POJOs.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,10 +34,23 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /**API mock deserialization test **/
+        BackendAPIClientMock backendAPI = new BackendAPIClientMock(getAssets());
+        User test = backendAPI.userAuth("testUsername", "testPasswd");
+
+        ArrayList<Basket> baskets = test.getBaskets();
+        for(Basket i: baskets){
+            for(BasketItem j: i.getBasketItems()){
+                Log.d("test", "" + j.getProduct().getName());
+            }
+        }
+
         /**
          * Making API calls to host test
          */
         final Button button = (Button) findViewById(R.id.button);
+
+        Log.d("test2","test");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

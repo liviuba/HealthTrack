@@ -1,4 +1,11 @@
 package com.example.proiect_ip.inshape.POJOs;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
+import android.content.ClipData;
+
+import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientMock;
+
+import java.util.ArrayList;
 
 /**
  * Created by liviu on 5/2/2016.
@@ -8,33 +15,26 @@ package com.example.proiect_ip.inshape.POJOs;
  * Might have extra info such as Price, Store, Expiration Date, etc
  */
 public class BasketItem {
-    private Integer ID;
-    private Basket basket;
+    private Integer id;
+    private Integer basket;
     private Product product;
+
+    public Integer getBasket() {
+        return basket;
+    }
 
     public Product getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public Integer getId() {
+        return id;
     }
 
-    public Basket getBasket() {
+    @JsonSetter("product")
+    public void setProduct(Integer prod) {
+        BackendAPIClientMock client = new BackendAPIClientMock();
 
-        return basket;
-    }
-
-    public void setBasket(Basket basket) {
-        this.basket = basket;
-    }
-
-    public Integer getID() {
-
-        return ID;
-    }
-
-    public void setID(Integer ID) {
-        this.ID = ID;
+        product = client.getProduct(prod);
     }
 }

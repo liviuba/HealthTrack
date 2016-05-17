@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.example.proiect_ip.inshape.POJOs.BasketItem;
 import com.example.proiect_ip.inshape.POJOs.Basket;
 import com.example.proiect_ip.inshape.POJOs.Product;
+import com.example.proiect_ip.inshape.POJOs.User;
 
 /**
  * Created by liviu on 4/30/2016.
@@ -22,17 +23,16 @@ public interface IBackendAPIClient {
      *
      * @return the user ID
      */
-    Integer userAuth (String userName, String userPassword);
+    User userAuth (String userName, String userPassword);
 
     /**
      * Gets all basket IDs for a user
      *
-     * @param userID
+     * @param basketID
      *
-     * @return  Array of populated (by whatever means) BasketPOJOs.
-     *          See the class POJOs.Basket for schema documentation
+     * @return  Populated Basket POJO
      */
-    ArrayList<Basket> userBaskets(Integer userID);
+    public Basket getBasket(Integer basketID);
 
     /** @TODO : Do these at some point
      *
@@ -42,8 +42,8 @@ public interface IBackendAPIClient {
      * userBasketIDs()  - returns all basket IDs / in a short form, to later query only the relevant ones
      */
 
-    ArrayList<BasketItem> getBasketItems(Integer basketID);
-    Product getProductByID(Integer itemID);
+    public BasketItem getBasketItem(Integer basketID);
+    Product getProduct(Integer itemID);
 
 
     /**

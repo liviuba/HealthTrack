@@ -1,28 +1,22 @@
 package com.example.proiect_ip.inshape.POJOs;
 
+import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientMock;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
+import java.util.ArrayList;
+
 /**
  * Created by liviu on 5/16/2016.
  */
 public class User {
-    private Integer ID;
+    private Integer id;
     private String lastName;
     private String email;
     private String firstName;
-
-    public Integer getID() {
-        return ID;
-    }
-
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
+    private ArrayList<Basket> baskets;
 
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getFirstName() {
@@ -30,17 +24,26 @@ public class User {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
 
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public ArrayList<Basket> getBaskets() {
+        return baskets;
     }
 
+    @JsonSetter("baskets")
+    public void setBaskets(ArrayList<Integer> basketIDs){
+        baskets = new ArrayList<Basket>();
+
+        BackendAPIClientMock client = new BackendAPIClientMock();
+        for(Integer basketID: basketIDs){
+            baskets.add(client.getBasket(basketID));
+        }
+    }
+
+    public Integer getId() {
+        return id;
+    }
 }

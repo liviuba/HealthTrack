@@ -1,44 +1,87 @@
 package com.example.proiect_ip.inshape.BackendAPIClient;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.util.Log;
+
 import com.example.proiect_ip.inshape.POJOs.Basket;
 import com.example.proiect_ip.inshape.POJOs.BasketItem;
 import com.example.proiect_ip.inshape.POJOs.Product;
 import com.example.proiect_ip.inshape.POJOs.User;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
  * Created by liviu on 5/16/2016.
  */
 public class BackendAPIClientMock implements IBackendAPIClient {
-    private String userAuthToken;
+    private static String userAuthToken;
+    private static ObjectMapper mapper;
+    private static AssetManager assetManager;
 
-    public Integer userAuth (String userName, String userPassword){
+    /*
+        Needed in order to avoid shuffling arround the AssetManager
+     */
+    public BackendAPIClientMock(AssetManager assetManager){
+        mapper = new ObjectMapper();
+        this.assetManager = assetManager;
+    }
+
+    public BackendAPIClientMock(){}
+
+    public User userAuth (String userName, String userPassword){
+        User user = new User();
+
+        try {
+            user = mapper.readValue(this.assetManager.open("Mocks/User.json"), User.class);
+        }
+        catch (java.io.IOException ioExc){
+            Log.e("InShape", ioExc.getMessage());
+        }
         //set auth token
-        return 1;
+        return user;
     }
 
-    public ArrayList<Basket> userBaskets(Integer userID){
-        ArrayList<Basket> baskets = new ArrayList<Basket>();
+    public Basket getBasket(Integer basketID){
+        Basket basket = new Basket();
 
-        return baskets;
+        try {
+            basket = mapper.readValue(this.assetManager.open("Mocks/Basket" + basketID + ".json"), Basket.class);
+        }
+        catch (java.io.IOException ioExc){
+            Log.e("InShape", ioExc.getMessage());
+        }
+
+        return basket;
     }
 
-    public User getUser (Integer userID){
-        String userJSON = "";
+    public BasketItem getBasketItem(Integer basketID) {
+        BasketItem basketItem = new BasketItem();
 
-        return new User();
+        try {
+            basketItem = mapper.readValue(this.assetManager.open("Mocks/BasketItem" + basketID + ".json"), BasketItem.class);
+        } catch (java.io.IOException ioExc) {
+            Log.e("InShape", ioExc.getMessage());
+        }
+
+        return basketItem;
     }
 
-    public ArrayList<BasketItem> getBasketItems(Integer basketID){
-        return new ArrayList<BasketItem>();
-    }
+    public Product getProduct(Integer itemID){
+        Product product = new Product();
 
-    public Product getProductByID(Integer itemID){
-        return new Product();
+        try {
+            product = mapper.readValue(this.assetManager.open("Mocks/Product" + itemID + ".json"), Product.class);
+        } catch (java.io.IOException ioExc) {
+            Log.e("InShape", ioExc.getMessage());
+        }
+
+        return product;
     }
 
     public void receiptPush(){
-
+        //TODO
     }
 }
