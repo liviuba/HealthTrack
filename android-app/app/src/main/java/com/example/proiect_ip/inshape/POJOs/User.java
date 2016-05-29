@@ -1,0 +1,64 @@
+package com.example.proiect_ip.inshape.POJOs;
+
+import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientFactory;
+import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientMock;
+import com.example.proiect_ip.inshape.BackendAPIClient.IBackendAPIClient;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
+import java.util.ArrayList;
+
+/**
+ * Created by liviu on 5/16/2016.
+ */
+public class User {
+    private Integer id;
+    private String lastName;
+    private String email;
+    private String firstName;
+    private String username;
+    private String password;
+    private ArrayList<Basket> baskets;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getFirstName() {
+
+        return firstName;
+    }
+    public String getUsername() {
+
+        return username;
+    }
+
+    //Returns the hashed password or something
+    //used just so the POJOs work
+    public String getPassword(){
+        return password;
+    }
+
+
+    public String getLastName() {
+
+        return lastName;
+    }
+
+    public ArrayList<Basket> getBaskets() {
+        return baskets;
+    }
+
+    @JsonSetter("baskets")
+    public void setBaskets(ArrayList<Integer> basketIDs){
+        baskets = new ArrayList<Basket>();
+
+        IBackendAPIClient client = BackendAPIClientFactory.getBackendAPIClient();
+        for(Integer basketID: basketIDs){
+            baskets.add(client.getBasket(basketID));
+        }
+    }
+
+    public Integer getId() {
+        return id;
+    }
+}

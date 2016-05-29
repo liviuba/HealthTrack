@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "username": "test",
+  "password": "1234",
+  "lastName": "testLastName",
+  "firstName": "testFirstName",
+  "email": "testEmail@test.com",
+  "baskets": [1,2]
+}
