@@ -70,11 +70,11 @@ public class BackendAPIClientMock implements IBackendAPIClient {
         return basketItem;
     }
 
-    public Product getProduct(Integer itemID){
+    public Product getProduct(Integer productID){
         Product product = new Product();
 
         try {
-            product = mapper.readValue(this.assetManager.open("Mocks/Product" + itemID + ".json"), Product.class);
+            product = mapper.readValue(this.assetManager.open("Mocks/Product" + productID + ".json"), Product.class);
         } catch (java.io.IOException ioExc) {
             Log.e("InShape", ioExc.getMessage());
         }

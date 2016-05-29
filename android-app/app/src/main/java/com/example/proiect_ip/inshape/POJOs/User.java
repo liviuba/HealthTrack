@@ -15,6 +15,8 @@ public class User {
     private String lastName;
     private String email;
     private String firstName;
+    private String username;
+    private String password;
     private ArrayList<Basket> baskets;
 
     public String getEmail() {
@@ -25,6 +27,17 @@ public class User {
 
         return firstName;
     }
+    public String getUsername() {
+
+        return username;
+    }
+
+    //Returns the hashed password or something
+    //used just so the POJOs work
+    public String getPassword(){
+        return password;
+    }
+
 
     public String getLastName() {
 

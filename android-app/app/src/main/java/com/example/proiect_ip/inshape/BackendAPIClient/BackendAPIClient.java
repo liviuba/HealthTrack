@@ -5,11 +5,36 @@ import com.example.proiect_ip.inshape.POJOs.BasketItem;
 import com.example.proiect_ip.inshape.POJOs.Product;
 import com.example.proiect_ip.inshape.POJOs.User;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 /**
  * Created by liviu on 5/17/2016.
  */
 public class BackendAPIClient implements IBackendAPIClient{
-    public BackendAPIClient(String APIEndpoint){}
+    /** API paths **/
+    private String userAuth = "userAuth";
+    private String getBasket = "getBasket";
+    private String getBasketItem = "getBasketItem";
+    private String getProduct = "getProduct";
+
+    /** GET params **/
+    private String userAuthUsername = "username";
+    private String userAuthPassword = "password";
+
+    private String getBasketBasketID = "basket";
+    private String getBasketItemItemID = "basketItem";
+    private String getProductProductID = "product";
+
+
+    /** Actual members & stuff **/
+
+
+
+    public BackendAPIClient(String APIEndpoint){
+
+
+    }
     public BasketItem getBasketItem(Integer basketID){
         //TODO
         return new BasketItem();
