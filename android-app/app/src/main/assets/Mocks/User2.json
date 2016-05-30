@@ -1,0 +1,12 @@
+{
+  "id": 2,
+  "username": "test2",
+  "password": "1234",
+  "lastName": "testLastNameSecond",
+  "firstName": "testFirstNameSecond",
+  "email": "SecondtestEmail@test.com",
+  "baskets": [],
+  "acceptedChallenges":[],
+  "pendingChallenges": [],
+  "sentChallenges": [1,2,3]
+}

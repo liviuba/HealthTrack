@@ -1,5 +1,7 @@
 package com.example.proiect_ip.inshape.POJOs;
 
+import android.util.Log;
+
 import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientFactory;
 import com.example.proiect_ip.inshape.BackendAPIClient.BackendAPIClientMock;
 import com.example.proiect_ip.inshape.BackendAPIClient.IBackendAPIClient;
@@ -21,7 +23,6 @@ public class Basket {
     private ArrayList<BasketItem> basketItems;
 
     public String getDate() {
-
         return date;
     }
 

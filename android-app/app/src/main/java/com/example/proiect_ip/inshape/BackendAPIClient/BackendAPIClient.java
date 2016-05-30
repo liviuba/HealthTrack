@@ -2,6 +2,7 @@ package com.example.proiect_ip.inshape.BackendAPIClient;
 
 import com.example.proiect_ip.inshape.POJOs.Basket;
 import com.example.proiect_ip.inshape.POJOs.BasketItem;
+import com.example.proiect_ip.inshape.POJOs.Challenge;
 import com.example.proiect_ip.inshape.POJOs.Product;
 import com.example.proiect_ip.inshape.POJOs.User;
 
@@ -53,5 +54,15 @@ public class BackendAPIClient implements IBackendAPIClient{
     public User userAuth (String userName, String userPassword){
         //TODO
         return new User();
+    }
+
+    public User getUserByID(Integer nUserID){
+        //TODO
+        return new User();
+    }
+
+    public Challenge getChallengeByID(Integer challengeID) {
+        //// TODO: 5/30/2016
+        return new Challenge();
     }
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.example.proiect_ip.inshape.POJOs.BasketItem;
 import com.example.proiect_ip.inshape.POJOs.Basket;
+import com.example.proiect_ip.inshape.POJOs.Challenge;
 import com.example.proiect_ip.inshape.POJOs.Product;
 import com.example.proiect_ip.inshape.POJOs.User;
 
@@ -53,4 +54,8 @@ public interface IBackendAPIClient {
      *          Do magic
      */
     void receiptPush();
+
+
+    public User getUserByID(Integer nUserID);
+    public Challenge getChallengeByID(Integer challengeID);
 }

@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.proiect_ip.inshape.POJOs.Basket;
 import com.example.proiect_ip.inshape.POJOs.BasketItem;
+import com.example.proiect_ip.inshape.POJOs.Challenge;
 import com.example.proiect_ip.inshape.POJOs.Product;
 import com.example.proiect_ip.inshape.POJOs.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,7 +37,7 @@ public class BackendAPIClientMock implements IBackendAPIClient {
         User user = new User();
 
         try {
-            user = mapper.readValue(this.assetManager.open("Mocks/User.json"), User.class);
+            user = mapper.readValue(this.assetManager.open("Mocks/User1.json"), User.class);
         }
         catch (java.io.IOException ioExc){
             Log.e("InShape", ioExc.getMessage());
@@ -84,5 +85,29 @@ public class BackendAPIClientMock implements IBackendAPIClient {
 
     public void receiptPush(){
         //TODO
+    }
+
+    public User getUserByID(Integer nUserID){
+        User user = new User();
+
+        try {
+            user = mapper.readValue(this.assetManager.open("Mocks/User" + nUserID + ".json"), User.class);
+        } catch (java.io.IOException ioExc) {
+            Log.e("InShape", ioExc.getMessage());
+        }
+
+        return user;
+    }
+
+    public Challenge getChallengeByID(Integer challengeID){
+        Challenge challenge = new Challenge();
+
+        try {
+            challenge = mapper.readValue(this.assetManager.open("Mocks/Challenge" + challengeID + ".json"), Challenge.class);
+        } catch (java.io.IOException ioExc) {
+            Log.e("InShape", ioExc.getMessage());
+        }
+
+        return challenge;
     }
 }

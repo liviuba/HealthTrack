@@ -1,0 +1,10 @@
+{
+  "id": 3,
+  "startDate": "1.5.2015",
+  "endDate": "1.6.2015",
+  "targetUserID": "1",
+  "sourceUserID": "2",
+  "challengeKiloCaloriesDaily": 3000,
+  "currencyPoints": 50,
+  "status": "Accepted"
+}

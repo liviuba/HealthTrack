@@ -5,5 +5,8 @@
   "lastName": "testLastName",
   "firstName": "testFirstName",
   "email": "testEmail@test.com",
-  "baskets": [1,2]
+  "baskets": [1,2],
+  "acceptedChallenges":[1,3],
+  "pendingChallenges": [2],
+  "sentChallenges": []
 }
