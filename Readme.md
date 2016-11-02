@@ -1,4 +1,4 @@
-### Installing the backend box in a VM
+#### Installing the backend box in a VM
 
 Install Vagrant
 
